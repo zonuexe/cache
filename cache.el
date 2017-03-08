@@ -66,7 +66,7 @@ to the created hash table."
                          :weakness weakness) init-fun test-fun cleanup-fun))
 
 (defun cache-gethash (key cache)
-  "Retrieve the value corresponding to key from cache."
+  "Retrieve the value corresponding to `KEY' from `CACHE'."
   (let ((keyval (gethash key (car cache) )))
     (if keyval
         (let ((val (car keyval))
@@ -79,7 +79,7 @@ to the created hash table."
             val)))))
 
 (defun cache-puthash (key val cache)
-  "Puts the key-val pair into cache."
+  "Puts the `KEY'-`VAL' pair into `CACHE'."
   (puthash key
            (cons val (funcall (cadr cache)))
            (car cache)))
