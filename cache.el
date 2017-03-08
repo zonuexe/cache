@@ -26,14 +26,15 @@
 ;;  V0.1 02/09/2010
 ;;
 
-(require 'cl)
-(defun* cache-make-cache (init-fun test-fun cleanup-fun
-                                  &optional &key
-                                  (test #'eql)
-                                  (size 65)
-                                  (rehash-size 1.5)
-                                  (rehash-threshold 0.8)
-                                  (weakness nil))
+;;; Code:
+(require 'cl-lib)
+(cl-defun cache-make-cache (init-fun test-fun cleanup-fun
+                                &optional &key
+                                (test #'eql)
+                                (size 65)
+                                (rehash-size 1.5)
+                                (rehash-threshold 0.8)
+                                (weakness nil))
   "Creates a cached hash table.  This is a hash table where
 elements expire at some condition, as specified by init-fun and
 test-fun.  The three arguments do as follows:
@@ -71,10 +72,10 @@ to the created hash table."
     (if keyval
         (let ((val (car keyval))
               (info (cdr keyval)))
-          (if (funcall (caddr cache) info)
+          (if (funcall (cl-caddr cache) info)
               (progn
                 (remhash key (car cache))
-                (funcall (cadddr cache) val)
+                (funcall (cl-cadddr cache) val)
                 nil)
             val)))))
 
