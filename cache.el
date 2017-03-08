@@ -2,6 +2,8 @@
 
 ;; Author: Nathaniel Flath
 ;; Version: 0.1
+;; Package-Requires: ((cl-lib "0.5"))
+;; Keywords: extensions
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License as
@@ -18,7 +20,7 @@
 ;; Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 ;; USA
 
-;; Commentary:
+;;; Commentary:
 
 ;;  Provides a cache that acts as a hash table whose key-value pairs expire.
 ;;  V0.1 02/09/2010
